@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Leetcode 周赛 210 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A 括号的最大嵌套深度题目 如果字符串满足一下条件之一，则可以称之为 有效括号字符串（valid parentheses string，可以简写为 VPS）： 字符串是一个空字符串 “”，或者是一个不为 “(“ 或 “)” 的单字符。 字符串可以写为 AB（A 与 B 字符串连接），其中 A 和 B 都是 有效括号字符串 。 字符串可以写为 (A)，其中 A 是一个 有效括号字符串 。 类似地，可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 周赛 210">
+<meta property="og:url" content="http://blog.saltroping.com/2020/10/21/leetcode%E5%91%A8%E8%B5%9B210/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="A 括号的最大嵌套深度题目 如果字符串满足一下条件之一，则可以称之为 有效括号字符串（valid parentheses string，可以简写为 VPS）： 字符串是一个空字符串 “”，或者是一个不为 “(“ 或 “)” 的单字符。 字符串可以写为 AB（A 与 B 字符串连接），其中 A 和 B 都是 有效括号字符串 。 字符串可以写为 (A)，其中 A 是一个 有效括号字符串 。 类似地，可">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-10-21T01:19:57.000Z">
+<meta property="article:modified_time" content="2021-09-16T00:15:35.477Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.saltroping.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode周赛210" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/21/leetcode%E5%91%A8%E8%B5%9B210/" class="article-date">
+  <time datetime="2020-10-21T01:19:57.000Z" itemprop="datePublished">2020-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Leetcode 周赛 210
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="A-括号的最大嵌套深度"><a href="#A-括号的最大嵌套深度" class="headerlink" title="A 括号的最大嵌套深度"></a>A 括号的最大嵌套深度</h2><p><strong>题目</strong></p>
+<p>如果字符串满足一下条件之一，则可以称之为 有效括号字符串（valid parentheses string，可以简写为 VPS）：</p>
+<p>字符串是一个空字符串 “”，或者是一个不为 “(“ 或 “)” 的单字符。 字符串可以写为 AB（A 与 B 字符串连接），其中 A 和 B 都是 有效括号字符串 。 字符串可以写为 (A)，其中 A 是一个 有效括号字符串 。 类似地，可以定义任何有效括号字符串 S 的 嵌套深度 depth(S)：</p>
+<p>depth(“”) = 0 depth(A + B) = max(depth(A), depth(B))，其中 A 和 B 都是 有效括号字符串 depth(“(“ + A + “)”) = 1 + depth(A)，其中 A 是一个 有效括号字符串 例如：””、”()()”、”()(()())” 都是 有效括号字符串（嵌套深度分别为 0、1、2），而 “)(“ 、”(()” 都不是 有效括号字符串 。</p>
+<p>给你一个 有效括号字符串 s，返回该字符串的 s 嵌套深度 。</p>
+<p><strong>思路</strong></p>
+<p>题目相当于在说有效括号字符串可以由文法<code>S \rightarrow SS,S \rightarrow (S),S \rightarrow a</code>生成，因此我们可以发现由这样的文法生成的语言中不存在无效的括号，如<code>(()</code>，<code>(((</code>，之类的，每一对括号内部的左右括号一定是匹配的，因此我们只需要遍历一遍字符串，在遍历中更新当前的嵌套深度<code>dep</code>，遇到左括号<code>dep++</code>，遇到右括号<code>dep--</code>，最终得到最大嵌套深度即可。</p>
+<p><strong>实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        temp = <span class="number">0</span></span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;(&#x27;</span>:</span><br><span class="line">                temp += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;)&#x27;</span>:</span><br><span class="line">                temp -= <span class="number">1</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, temp)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="B-最大网络秩"><a href="#B-最大网络秩" class="headerlink" title="B 最大网络秩"></a>B 最大网络秩</h2><p><strong>题目</strong></p>
+<p>n 座城市和一些连接这些城市的道路 roads 共同组成一个基础设施网络。每个 roads[i] = [ai, bi] 都表示在城市 ai 和 bi 之间有一条双向道路。</p>
+<p>两座不同城市构成的 城市对 的 网络秩 定义为：与这两座城市 直接 相连的道路总数。如果存在一条道路直接连接这两座城市，则这条道路只计算 一次 。</p>
+<p>整个基础设施网络的 最大网络秩 是所有不同城市对中的 最大网络秩 。</p>
+<p>给你整数 n 和数组 roads，返回整个基础设施网络的 最大网络秩 。</p>
+<p><strong>思路</strong></p>
+<p>原题中的数据量并不大，n 最大为 100，因此我们可以暴力枚举网络中的所有点对，求出网络的最大网络秩。</p>
+<p>在枚举中，首先我们枚举第一个点，求出与它相邻的边。枚举第二个点时，我们需要考虑这两点间是否连通，如果这两点连通则与第二个点相邻的边中存在一条我们已经访问过的边，需要删去。</p>
+<p><strong>实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximalNetworkRank</span>(<span class="params">self, n: <span class="built_in">int</span>, roads: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        out = [[] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> roads:</span><br><span class="line">            out[i[<span class="number">0</span>]].append(i[<span class="number">1</span>])</span><br><span class="line">            out[i[<span class="number">1</span>]].append(i[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            maxn = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> x,y <span class="keyword">in</span> <span class="built_in">enumerate</span>(out):</span><br><span class="line">                <span class="keyword">if</span> x != i:</span><br><span class="line">                    temp = <span class="built_in">len</span>(y)-<span class="number">1</span> <span class="keyword">if</span> i <span class="keyword">in</span> y <span class="keyword">else</span> <span class="built_in">len</span>(y)</span><br><span class="line">                    maxn = <span class="built_in">max</span>(maxn, temp)</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="built_in">len</span>(out[i])+maxn)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="C-分割两个字符串得到回文串"><a href="#C-分割两个字符串得到回文串" class="headerlink" title="C 分割两个字符串得到回文串"></a>C 分割两个字符串得到回文串</h2><p><strong>题目</strong></p>
+<p>给你两个字符串 a 和 b ，它们长度相同。请你选择一个下标，将两个字符串都在 相同的下标 分割开。由 a 可以得到两个字符串： aprefix 和 asuffix ，满足 a = aprefix + asuffix ，同理，由 b 可以得到两个字符串 bprefix 和 bsuffix ，满足 b = bprefix + bsuffix 。请你判断 aprefix + bsuffix 或者 bprefix + asuffix 能否构成回文串。</p>
+<p>当你将一个字符串 s 分割成 sprefix 和 ssuffix 时， ssuffix 或者 sprefix 可以为空。比方说， s = “abc” 那么 “” + “abc” ， “a” + “bc” ， “ab” + “c” 和 “abc” + “” 都是合法分割。</p>
+<p>如果 能构成回文字符串 ，那么请返回 true，否则返回 false 。</p>
+<p>请注意， x + y 表示连接字符串 x 和 y 。</p>
+<p><strong>思路</strong></p>
+<p>（听说这题数据很烂，用很菜的方法就可以过…）</p>
+<p>题目中的分割字符串即 a 的前缀+b 的后缀，或者 b 的前缀+a 的后缀，因此最终所得到的回文串的长度和 ab 的长度是一致的，而它又是个回文串，所以我们可以注意到的是如果其切割的下标不在字符串中点，那么回文串所靠近中点的一部分回文子串一定来源于 a 或 b 串的中间。</p>
+<p>因此我们可以分别求出 ab 串的“中心回文子串”，即一个以原字符串的中点为中点的回文子串。之后可以分为两种情况，回文串中心来源于 a 或来源于 b。</p>
+<p>如果来源于 a，我们把 a 串中的回文子串删去，同时将 b 串按照对应的长度切片，那么此时我们只需要两个指针，一个从 a 的左端开始一个从 b 的右端开始向中心遍历，检查两个指针是否相同即可，如果遍历超过一半则表示 ab 串可以通过分割得到回文串。需要注意的是我们也需要以 a 的右端 b 的左端为开始遍历一次。</p>
+<p>同样如果来源于 b 也可以依照上面的方法处理。</p>
+<p>（这个代码写得相当冗余了…存在大量代码浪费的地方…懒得改了…）</p>
+<p><strong>实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkPalindromeFormation</span>(<span class="params">self, a: <span class="built_in">str</span>, b: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="comment"># 双指针遍历</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">chk</span>(<span class="params">s1, s2</span>):</span></span><br><span class="line">            l = <span class="number">0</span>; r = <span class="built_in">len</span>(s1)-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> s1[l] == s2[r]:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l &gt;= r:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">else</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        length = <span class="built_in">len</span>(a)</span><br><span class="line">        <span class="comment"># 长度分奇偶讨论</span></span><br><span class="line">        <span class="keyword">if</span> length%<span class="number">2</span>:</span><br><span class="line">            <span class="comment"># 依照 a 的中心回文子串切片</span></span><br><span class="line">            mid = (length-<span class="number">1</span>)//<span class="number">2</span>-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> mid &gt;= <span class="number">0</span> <span class="keyword">and</span> a[mid] == a[length-mid-<span class="number">1</span>]:</span><br><span class="line">                mid -= <span class="number">1</span></span><br><span class="line">            mid += <span class="number">1</span></span><br><span class="line">            temp1 = a[:mid]+a[length-mid:]; temp2 = b[:mid]+b[length-mid:]</span><br><span class="line">            <span class="keyword">if</span> chk(temp1, temp2) <span class="keyword">or</span> chk(temp1[::-<span class="number">1</span>], temp2[::-<span class="number">1</span>]): <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="comment"># 依照 b 的中心回文子串切片</span></span><br><span class="line">            mid = (length-<span class="number">1</span>)//<span class="number">2</span>-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> mid &gt;= <span class="number">0</span> <span class="keyword">and</span> b[mid] == b[length-mid-<span class="number">1</span>]:</span><br><span class="line">                mid -= <span class="number">1</span></span><br><span class="line">            mid += <span class="number">1</span></span><br><span class="line">            temp1 = a[:mid]+a[length-mid:]; temp2 = b[:mid]+b[length-mid:]</span><br><span class="line">            <span class="keyword">if</span> chk(temp1, temp2) <span class="keyword">or</span> chk(temp1[::-<span class="number">1</span>], temp2[::-<span class="number">1</span>]): <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 依照 a 的中心回文子串切片</span></span><br><span class="line">            mid = length//<span class="number">2</span>-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> mid &gt;= <span class="number">0</span> <span class="keyword">and</span> a[mid] == a[length-mid-<span class="number">1</span>]:</span><br><span class="line">                mid -= <span class="number">1</span></span><br><span class="line">            mid += <span class="number">1</span></span><br><span class="line">            temp1 = a[:mid]+a[length-mid:]; temp2 = b[:mid]+b[length-mid:]</span><br><span class="line">            <span class="keyword">if</span> chk(temp1, temp2) <span class="keyword">or</span> chk(temp1[::-<span class="number">1</span>], temp2[::-<span class="number">1</span>]): <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="comment"># 依照 b 的中心回文子串切片</span></span><br><span class="line">            mid = length//<span class="number">2</span>-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> mid &gt;= <span class="number">0</span> <span class="keyword">and</span> b[mid] == b[length-mid-<span class="number">1</span>]:</span><br><span class="line">                mid -= <span class="number">1</span></span><br><span class="line">            mid += <span class="number">1</span></span><br><span class="line">            temp1 = a[:mid]+a[length-mid:]; temp2 = b[:mid]+b[length-mid:]</span><br><span class="line">            <span class="keyword">if</span> chk(temp1, temp2) <span class="keyword">or</span> chk(temp1[::-<span class="number">1</span>], temp2[::-<span class="number">1</span>]): <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="D-统计子树中城市之间最大距离"><a href="#D-统计子树中城市之间最大距离" class="headerlink" title="D 统计子树中城市之间最大距离"></a>D 统计子树中城市之间最大距离</h2><p><strong>题目</strong></p>
+<p>给你 n 个城市，编号为从 1 到 n 。同时给你一个大小为 n-1 的数组 edges ，其中 edges[i] = [ui, vi] 表示城市 ui 和 vi 之间有一条双向边。题目保证任意城市之间只有唯一的一条路径。换句话说，所有城市形成了一棵 树 。</p>
+<p>一棵 子树 是城市的一个子集，且子集中任意城市之间可以通过子集中的其他城市和边到达。两个子树被认为不一样的条件是至少有一个城市在其中一棵子树中存在，但在另一棵子树中不存在。</p>
+<p>对于 d 从 1 到 n-1 ，请你找到城市间 最大距离 恰好为 d 的所有子树数目。</p>
+<p>请你返回一个大小为 n-1 的数组，其中第 d 个元素（下标从 1 开始）是城市间 最大距离 恰好等于 d 的子树数目。</p>
+<p>请注意，两个城市间距离定义为它们之间需要经过的边的数目。</p>
+<p><strong>思路</strong></p>
+<p>题目数据量很小，n 最大只有 15，可以轻易地想到状压。通过状压来遍历树中的点集的同时需要判断这个点集是否能连通以减少遍历数量。</p>
+<p>首先如果点集中只有一个点显然没有用。存在多个点时，可以考虑用并查集的思维进行快速判断。如果点集中两个点相邻即两个点中存在一条边，那么可以合并这两个点，连通分量数减 1。通过初始化将每个点设置为孤立点，连通分量数等于点数，之后遍历边，如果两点相邻则连通分量数减 1，最后判断连通分量数是否为 1。一般来说这样的方法是 NG 的，但在不存在环和重边的树上这样的方法可以进行判断。</p>
+<p>判断为子树之后我们需要求出所得子树的直径，可以用 dfs 或 bfs 求（这样的话上面的判断过程也可以浓缩进来），考虑到点数不大，我们也可以暴力枚举点集中的所有点对，求点对最短距中的最长距，即<code>ans=max(min(dis(i,j)))&#123;i,j\in S\land i\neq j&#125;</code>。考虑到这里要经常用到<code>dis(i,j)</code>，因此我们可以先通过 floyd 去求出原树中所有点对间的最短距离。</p>
+<p>（比赛的时候想到怎么状压 floyd 了，但奈何图论底子太差，忘了怎么写了…正好这里复习一下）</p>
+<p><strong>实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSubgraphsForEachDiameter</span>(<span class="params">self, n: <span class="built_in">int</span>, edges: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># Floyd 求出所有点对间的最短路径</span></span><br><span class="line">        dis = [[<span class="number">0x3f3f3f3f</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        d = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n): dis[i][i] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> edges:</span><br><span class="line">            dis[i[<span class="number">0</span>]-<span class="number">1</span>][i[<span class="number">1</span>]-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">            dis[i[<span class="number">1</span>]-<span class="number">1</span>][i[<span class="number">0</span>]-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    dis[i][j] = <span class="built_in">min</span>(dis[i][j], dis[i][k] + dis[k][j])</span><br><span class="line">        <span class="comment"># 状压暴力枚举</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>**n+<span class="number">1</span>):</span><br><span class="line">            cur = <span class="number">0</span></span><br><span class="line">            node = []</span><br><span class="line">            <span class="keyword">while</span> i:</span><br><span class="line">                <span class="keyword">if</span> i&amp;<span class="number">1</span>:</span><br><span class="line">                    node.append(cur)</span><br><span class="line">                i = i &gt;&gt; <span class="number">1</span></span><br><span class="line">                cur += <span class="number">1</span></span><br><span class="line">            nodenum = <span class="built_in">len</span>(node)</span><br><span class="line">            <span class="comment"># 如果只有一个节点显然没有长度大于 0 的路径</span></span><br><span class="line">            <span class="keyword">if</span> nodenum == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># 并查集思维判断是否连通</span></span><br><span class="line">            <span class="comment"># 遍历边，如果边的两端都在点集中说明这两点相邻，连通分量数减一</span></span><br><span class="line">            <span class="comment"># 因为两点间无重边，因此可以通过这样的方式判断</span></span><br><span class="line">            <span class="comment"># 最终如果点集是联通的，那么最终连通分量数为 1，如果不为 1 则表明不连通</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> edges:</span><br><span class="line">                <span class="keyword">if</span> i[<span class="number">0</span>]-<span class="number">1</span> <span class="keyword">in</span> node <span class="keyword">and</span> i[<span class="number">1</span>]-<span class="number">1</span> <span class="keyword">in</span> node:</span><br><span class="line">                    nodenum -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nodenum == <span class="number">1</span>:</span><br><span class="line">                <span class="comment"># 遍历点集中点对的路径，求出最长路</span></span><br><span class="line">                maxn = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(node)):</span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, <span class="built_in">len</span>(node)):</span><br><span class="line">                        maxn = <span class="built_in">max</span>(maxn, dis[node[i]][node[j]])</span><br><span class="line">                d[maxn-<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> d</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.saltroping.com/2020/10/21/leetcode%E5%91%A8%E8%B5%9B210/" data-id="cktm6nfyj0000c0v62ff55pp9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/24/leetcode%E5%91%A8%E8%B5%9B211/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Leetcode 周赛 211
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/22/%E4%BB%8E%E4%B8%8A%E6%89%8B-travis-ci-%E6%97%B6%E7%8A%AF%E7%9A%84%E9%94%99%E8%AF%AF%E8%81%8A%E8%B5%B7/">从上手 travis ci 时犯的错误聊起</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/12/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8-springboot-spring-security-vue-%E7%9A%84%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">记一次使用 SpringBoot + Spring Security + Vue 的前后端分离权限认证</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/12/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%B5%85%E6%9E%90-%E6%A4%8D%E6%A0%91%E8%8A%82%E9%99%90%E5%AE%9A-%E4%B8%8A/">线段树浅析-植树节限定-上</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/%E5%86%99%E5%9C%A82021%E5%B9%B4%E6%98%A5%E8%8A%82%E4%B9%8B%E5%89%8D/">写在2021年春节之前</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/leetcode%E5%91%A8%E8%B5%9B211/">Leetcode 周赛 211</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.saltroping.com">
-  <title>Archives: 2021/11 | SaltroPing 的博客小站</title>
+  <title>使用 Webpack5 从零架一个 React+TS 项目（一） | SaltroPing 的博客小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="SaltroPing 的博客小站">
-<meta property="og:url" content="http://blog.saltroping.com/archives/2021/11/index.html">
+  <meta name="description" content="最基本的配置架项目的第一步，创建新文件夹，然后 npm init，其中选择我们的入口文件为 src 文件夹下的 index.ts。 1234567891011121314&gt; mkdir nano&gt; cd nano&gt; npm init&amp;#123;  &quot;name&quot;: &quot;nano&quot;,  &quot;version&quot;: &quot;1.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Webpack5 从零架一个 React+TS 项目（一）">
+<meta property="og:url" content="http://blog.saltroping.com/2021/03/12/%E4%BD%BF%E7%94%A8%20Webpack5%20%E4%BB%8E%200%20%E6%9E%B6%E4%B8%80%E4%B8%AA%20React%20+%20TS%20%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="SaltroPing 的博客小站">
+<meta property="og:description" content="最基本的配置架项目的第一步，创建新文件夹，然后 npm init，其中选择我们的入口文件为 src 文件夹下的 index.ts。 1234567891011121314&gt; mkdir nano&gt; cd nano&gt; npm init&amp;#123;  &quot;name&quot;: &quot;nano&quot;,  &quot;version&quot;: &quot;1.0">
 <meta property="og:locale">
+<meta property="og:image" content="c:/Users/23731/AppData/Roaming/Typora/typora-user-images/image-20211127222717374.png">
+<meta property="article:published_time" content="2021-03-12T15:22:36.000Z">
+<meta property="article:modified_time" content="2021-11-29T02:37:25.809Z">
 <meta property="article:author" content="Saltro Ping">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/23731/AppData/Roaming/Typora/typora-user-images/image-20211127222717374.png">
   
     <link rel="alternative" href="/atom.xml" title="SaltroPing 的博客小站" type="application/atom+xml">
   
@@ -136,43 +142,239 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-使用 Webpack5 从 0 架一个 React + TS 项目" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      使用 Webpack5 从零架一个 React+TS 项目（一）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/%E4%BD%BF%E7%94%A8%20Webpack5%20%E4%BB%8E%200%20%E6%9E%B6%E4%B8%80%E4%B8%AA%20React%20+%20TS%20%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2021-11-27T16:07:45.506Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+        
+        <a href="/2021/03/12/%E4%BD%BF%E7%94%A8%20Webpack5%20%E4%BB%8E%200%20%E6%9E%B6%E4%B8%80%E4%B8%AA%20React%20+%20TS%20%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
+  	<time datetime="2021-03-12T15:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="最基本的配置"><a href="#最基本的配置" class="headerlink" title="最基本的配置"></a>最基本的配置</h2><p>架项目的第一步，创建新文件夹，然后 <code>npm init</code>，其中选择我们的入口文件为 src 文件夹下的 <code>index.ts</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; mkdir nano</span><br><span class="line">&gt; cd nano</span><br><span class="line">&gt; npm init</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;nano&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;src/index.ts&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后简单创建一下入口文件 <code>src/index.ts</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nano</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   └── index.ts</span><br><span class="line">├── tsconfig.json</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure>
+
+<p>既然要使用 webpack5，那我们接下来就装一下 webpack 和 cli。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm i webpack webpack-cli -D</span><br></pre></td></tr></table></figure>
+
+<p>新建一个 <code>webpack.config.js</code>，配置 webpack。下为 <code>webpack.config.js</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>); <span class="comment">// 导入path模块</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/index.ts&#x27;</span>,</span><br><span class="line">  <span class="comment">// 出口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以在 <code>package.json</code> 里面编写我们的编译脚本了。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;nano&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;src/index.ts&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack --mode=production&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;webpack&quot;</span>: <span class="string">&quot;^5.64.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^4.9.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是我们可以激动地编写我们的 <code>index.ts</code> 文件了，简单尝试一点 ts 语法吧。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/index.ts</span></span><br><span class="line"><span class="keyword">const</span> a: <span class="built_in">string</span> = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p>直接运行 <code>npm run build</code>！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ERROR in ./src/index.ts 1:7</span><br><span class="line">Module parse failed: Unexpected token (1:7)</span><br><span class="line">You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders</span><br><span class="line">&gt; const a: string = &#x27;a&#x27;;</span><br><span class="line">| console.log(a);</span><br><span class="line">| </span><br><span class="line"></span><br><span class="line">webpack 5.64.4 compiled with 1 error in 222 ms</span><br></pre></td></tr></table></figure>
+
+<p>然后毫无疑问地出现了问题。这是因为我们要编译的文件 <code>index.ts</code> 是 ts 文件，但 webpack 本身是不能解析 ts 的，所以我们需要单独处理 ts。此处参考 webpack 官网 TypeScript 一章。</p>
+<h3 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h3><p>首先安装解析 ts 要用的工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm i typescript ts-loader -D</span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要在项目中单独配置 <code>tsconfig.json</code>。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;es5&quot;</span>, <span class="comment">// 指定编译到的 es 版本 es5</span></span><br><span class="line">        <span class="attr">&quot;module&quot;</span>: <span class="string">&quot;es6&quot;</span>, <span class="comment">// 指定编译到的模块系统 es6</span></span><br><span class="line">        <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span>, <span class="comment">// 使用严格类型检查</span></span><br><span class="line">        <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span>, <span class="comment">// 允许使用 js 语法</span></span><br><span class="line">        <span class="attr">&quot;jsx&quot;</span>: <span class="string">&quot;react&quot;</span>, <span class="comment">// 指定 jsx 语法 react</span></span><br><span class="line">        <span class="attr">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span> <span class="comment">// 允许使用类似 import React from &#x27;react&#x27; 的语法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以及 webpack 配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>); <span class="comment">// 导入path模块</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/index.ts&#x27;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</span><br><span class="line">        use: <span class="string">&#x27;ts-loader&#x27;</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>, <span class="comment">// 排除 node_modules 目录</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">extensions</span>: [<span class="string">&#x27;.tsx&#x27;</span>, <span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>], <span class="comment">// 自动解析确定的扩展</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 出口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到此我们完成了 webpack 下 ts 的简单配置，为了避免“站在 bug 的肩膀上开发”的问题，我们先来测试一下至今为止的配置是否正确有效。再次运行 <code>npm run build</code>！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">asset bundle.js 40 bytes [compared for emit] [minimized] (name: main)</span><br><span class="line">./src/index.ts 46 bytes [built] [code generated]</span><br><span class="line">webpack 5.64.4 compiled successfully in 2815 ms</span><br></pre></td></tr></table></figure>
+
+<p>成功了！在 <code>dist/bundle.js</code> 里看下我们编译的成果吧。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dist/bundle.js</span></span><br><span class="line">(<span class="function">()=&gt;</span>&#123;<span class="string">&quot;use strict&quot;</span>;<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>)&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>用 node 跑一下，发现确实是可以输出 a 的。那么至此 ts 部分我们就配置完成了。</p>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>还没完，我们还需要 react。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i react react-dom</span><br><span class="line">npm i @types/react @types/react-dom -D  # 使用 ts 时记得安装相关声明文件</span><br></pre></td></tr></table></figure>
+
+<p>好了。没错这样就好了，因为我们在 <code>tsconfig.json</code> 中配置过 <code>&quot;jsx&quot;: &quot;react&quot;</code>，这样在编译 tsx 时 ts 就能自动帮我们将 tsx 编译成 react 了。口说无凭，不如我们来测试下，写一个 <code>App.tsx</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// src/App.tsx</span><br><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line"></span><br><span class="line">const App: React.FC = () =&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello React + TypeScript!&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>记得在 <code>index.tsx</code> 中导入 <code>App.tsx</code> 并渲染出来。（因为 <code>index.ts</code> 中要写 tsx 所以它变成了 <code>index.tsx</code>，顺便，记得改 webpack 入口）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// src/index.tsx</span><br><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;;</span><br><span class="line">import App from &#x27;./App&#x27;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&#x27;root&#x27;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>来试着编译一下 <code>npm run build</code>，我们可以看到 <code>bundle.js</code> 确实变成了一大堆，我们确实编译成功了。</p>
+<p>等等，好像少了点什么，html 呢？我们要如何查看写出来的效果？</p>
+<p>在解决这个问题之前，我们先用一点笨办法来测试我们现在写的对不对，那就是直接在 dist 里写一个 html 运行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// dist/index.html</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在打开 <code>index.html</code> 我们就可以看到我们的成果了。</p>
+<p><img src="C:\Users\23731\AppData\Roaming\Typora\typora-user-images\image-20211127222717374.png" alt="image-20211127222717374"></p>
+<p>看，用 webpack 从零配置一个 react+ts 开发环境也没那么难。</p>
+<h2 id="优化我们的配置"><a href="#优化我们的配置" class="headerlink" title="优化我们的配置"></a>优化我们的配置</h2><h3 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h3><p>当然，直接在 dist 里新建一个 <code>index.html</code> 有那么“一点”不优雅。我们想要的是，只需要写一个 <code>index.html</code> 模板，甚至都不需要提供要引入的 script 标签，webpack 就能帮我们自动引入，并且把它放到 dist 目录下。<code>HtmlWebpackPlugin</code> 就是做这个的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm i html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<p>在 webpack 中使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>); <span class="comment">// 导入path模块</span></span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>); <span class="comment">// 导入html-webpack-plugin模块</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/index.tsx&#x27;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.tsx?$/</span>,</span><br><span class="line">        use: <span class="string">&#x27;ts-loader&#x27;</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>, <span class="comment">// 排除 node_modules 目录</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">extensions</span>: [<span class="string">&#x27;.tsx&#x27;</span>, <span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>], <span class="comment">// 自动解析确定的扩展</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      <span class="attr">template</span>: path.resolve(__dirname, <span class="string">&#x27;./template/index.html&#x27;</span>), <span class="comment">// 模板位置</span></span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;index.html&#x27;</span>, <span class="comment">// 输出后的文件名，路径是 output.path</span></span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;Nano&#x27;</span>, <span class="comment">// 传给模板的变量</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 出口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>调整一下 <code>index.html</code> 的内容和位置。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// template/index.html</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&lt;%= htmlWebpackPlugin.options.title %&gt;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>好，我们现在可以编译查看结果了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>Nano<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span>=<span class="string">&quot;defer&quot;</span> <span class="attr">src</span>=<span class="string">&quot;bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>虽然它很丑，但是我们还是可以看出它确实在 dist 目录下，也确实把 bundle.js 加入进去了，甚至还替换了 <code>htmlWebpackPlugin.options.title</code>，这就是我们想要的结果。现在我们可以优雅地写 react+ts 了。</p>
+<h3 id="Webpack-Dev-Server"><a href="#Webpack-Dev-Server" class="headerlink" title="Webpack Dev Server"></a>Webpack Dev Server</h3><p>但是我们的开发体验还是不够爽，我们每次修改一点，都要重新执行 <code>npm run build</code>，它还慢得要死，然后我们还得手动打开 html 文件，才能看到我们刚刚修改的那行代码对不对。这样并不适合开发！我们需要的是一个可以实时监听我们所做的改动并重新编译，编译时效率还高的东西。这个时候我们有两个选择，第一个是使用 webpack 的 <code>--watch</code> 选项，它可以监听我们对文件做的改动并自动重新编译；第二个是使用 <code>webpack-dev-server</code>。我们选择后者，因为它配置项更丰富，更能满足需求（自动刷新页面）。</p>
+<p>依旧是安装 <code>npm i webpack-dev-server -D</code>。然后在 <code>webpack.config.js</code> 中调整相应配置 <code>devServer</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line">...</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">static</span>: &#123;</span><br><span class="line">      <span class="attr">directory</span>: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>), <span class="comment">// 告诉服务器从指定目录中提供静态文件，也即打包后的文件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">8080</span>, <span class="comment">// 设置端口</span></span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>, <span class="comment">// 自动打开浏览器</span></span><br><span class="line">    <span class="attr">hot</span>: <span class="literal">true</span>, <span class="comment">// 开启热更新</span></span><br><span class="line">  &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>最后设置下 npm 脚本 <code>&quot;dev&quot;: &quot;webpack serve --mode=development&quot;</code>，就可以轻松地实现更新后自动编译了。</p>
+<h3 id="Webpack-缓存"><a href="#Webpack-缓存" class="headerlink" title="Webpack 缓存"></a>Webpack 缓存</h3><p>我们可以发现，在每次 <code>npm run dev</code> 时，我们都会把 react 重新编译一遍，尽管它根本没有变过。因此我们自然可以想到可以用缓存来提高我们编译的效率。Webpack5 引入了缓存来提高二次构建速度，只要在 <code>webpack.config.js</code> 中配置一下 <code>cache</code> 就可以实现缓存，轻松提高编译效率。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line">...</span><br><span class="line">  <span class="attr">cache</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;filesystem&#x27;</span>,</span><br><span class="line">    <span class="attr">buildDependencies</span>: &#123;</span><br><span class="line">      <span class="attr">config</span>: [__filename], <span class="comment">// 构建依赖的config文件（通过 require 依赖）内容发生变化时，缓存失效</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>这样，在二次构建时，构建速度便明显提高了。</p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p>最后，我们使用 git 创建一下仓库 <code>git init</code>，同时我们还需要有一个 <code>.gitignore</code> 文件，毕竟我们可不想把全宇宙最重的东西 <code>node_modules</code> 提交上去。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// .gitignore</span><br><span class="line">node_modules</span><br><span class="line">dist</span><br></pre></td></tr></table></figure>
+
+<p>好了，现在我们可以愉快地提交了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现在目录结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nano</span><br><span class="line">├── dist</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   └── index.tsx</span><br><span class="line">├── template</span><br><span class="line">│   └── index.html</span><br><span class="line">├── tsconfig.json</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure>
+
+<p>虽然目前已经在项目中配置了 webpack、ts、react 了，但这离我们的项目初始化还很远。首先，我们希望在写 tsx 时可以 import 更多种类的文件，比如 css、less、图片等，这就需要配置 webpack loader 以满足对其他文件的解析。同时，为了保证协同开发中的规范性，我们要使用更多的协作规范工具，比如 eslint、prettier、commitlint、commitizen 等等，这样能保证我们团队协作更加规范。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/cs//" class="article-tag-list-link color3">cs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.saltroping.com/2021/03/12/%E4%BD%BF%E7%94%A8%20Webpack5%20%E4%BB%8E%200%20%E6%9E%B6%E4%B8%80%E4%B8%AA%20React%20+%20TS%20%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/04/12/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8-springboot-spring-security-vue-%E7%9A%84%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          记一次使用 SpringBoot + Spring Security + Vue 的前后端分离权限认证
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/03/12/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%B5%85%E6%9E%90-%E6%A4%8D%E6%A0%91%E8%8A%82%E9%99%90%E5%AE%9A-%E4%B8%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线段树浅析-植树节限定-上</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -195,8 +397,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

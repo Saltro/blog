@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="SaltroPing 的博客小站">
 <meta property="og:description" content="最基本的配置架项目的第一步，创建新文件夹，然后 npm init，其中选择我们的入口文件为 src 文件夹下的 index.ts。 1234567891011121314&gt; mkdir nano&gt; cd nano&gt; npm init&amp;#123;  &quot;name&quot;: &quot;nano&quot;,  &quot;version&quot;: &quot;1.0">
 <meta property="og:locale">
-<meta property="og:image" content="c:/Users/23731/AppData/Roaming/Typora/typora-user-images/image-20211127222717374.png">
+<meta property="og:image" content="http://qiniu-picgo.saltroping.com/image-20211127222717374.png">
 <meta property="article:published_time" content="2021-11-27T15:22:36.000Z">
-<meta property="article:modified_time" content="2021-11-29T02:40:30.287Z">
+<meta property="article:modified_time" content="2021-11-29T04:20:09.854Z">
 <meta property="article:author" content="Saltro Ping">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/23731/AppData/Roaming/Typora/typora-user-images/image-20211127222717374.png">
+<meta name="twitter:image" content="http://qiniu-picgo.saltroping.com/image-20211127222717374.png">
   
     <link rel="alternative" href="/atom.xml" title="SaltroPing 的博客小站" type="application/atom+xml">
   
@@ -49,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/images/avatar.jpg" class="js-avatar">
+			<img src="http://qiniu-picgo.saltroping.com/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -101,7 +101,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/images/avatar.jpg" class="js-avatar">
+				<img src="http://qiniu-picgo.saltroping.com/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -215,7 +215,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// dist/index.html</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>现在打开 <code>index.html</code> 我们就可以看到我们的成果了。</p>
-<p><img src="C:\Users\23731\AppData\Roaming\Typora\typora-user-images\image-20211127222717374.png" alt="image-20211127222717374"></p>
+<p><img src="http://qiniu-picgo.saltroping.com/image-20211127222717374.png" alt="image-20211127222717374"></p>
 <p>看，用 webpack 从零配置一个 react+ts 开发环境也没那么难。</p>
 <h2 id="优化我们的配置"><a href="#优化我们的配置" class="headerlink" title="优化我们的配置"></a>优化我们的配置</h2><h3 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h3><p>当然，直接在 dist 里新建一个 <code>index.html</code> 有那么“一点”不优雅。我们想要的是，只需要写一个 <code>index.html</code> 模板，甚至都不需要提供要引入的 script 标签，webpack 就能帮我们自动引入，并且把它放到 dist 目录下。<code>HtmlWebpackPlugin</code> 就是做这个的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm i html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
@@ -331,8 +331,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2021/05/22/%E4%BB%8E%E4%B8%8A%E6%89%8B-travis-ci-%E6%97%B6%E7%8A%AF%E7%9A%84%E9%94%99%E8%AF%AF%E8%81%8A%E8%B5%B7/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">从上手 travis ci 时犯的错误聊起</div>
+    <a href="/2021/11/27/%E4%BD%BF%E7%94%A8-Webpack5-%E4%BB%8E%E9%9B%B6%E6%9E%B6%E4%B8%80%E4%B8%AA-React+TS-%E9%A1%B9%E7%9B%AE-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用 Webpack5 从零架一个 React+TS 项目（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   

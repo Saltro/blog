@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="SaltroPing 的博客小站">
 <meta property="og:description" content="线段树是刷题中一种常用的数据结构，其可以在O(logN)的复杂度内实现修改单个点、修改区间、区间求和、区间最大值、区间最小值等操作。那么线段树究竟是如何做到这一点的、线段树用代码又该如何实现，借着植树节的这个时间，我来浅析（学习）一下线段树的方方面面。   组成与构建简单点说，线段树就是由“区间”组成的二叉树，其结点表示的是某段区间上的区间和，而结点的子结点便是区间的左子区间和右子区间。 假如有一">
 <meta property="og:locale">
-<meta property="og:image" content="http://blog.saltroping.com/images/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png">
+<meta property="og:image" content="http://qiniu-picgo.saltroping.com/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png">
 <meta property="article:published_time" content="2021-03-12T15:22:36.000Z">
-<meta property="article:modified_time" content="2021-09-16T01:58:18.050Z">
+<meta property="article:modified_time" content="2021-11-29T04:20:49.944Z">
 <meta property="article:author" content="Saltro Ping">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.saltroping.com/images/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png">
+<meta name="twitter:image" content="http://qiniu-picgo.saltroping.com/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png">
   
     <link rel="alternative" href="/atom.xml" title="SaltroPing 的博客小站" type="application/atom+xml">
   
@@ -49,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/images/avatar.jpg" class="js-avatar">
+			<img src="http://qiniu-picgo.saltroping.com/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -101,7 +101,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/images/avatar.jpg" class="js-avatar">
+				<img src="http://qiniu-picgo.saltroping.com/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -165,7 +165,7 @@
         <p>线段树是刷题中一种常用的数据结构，其可以在<code>O(logN)</code>的复杂度内实现修改单个点、修改区间、区间求和、区间最大值、区间最小值等操作。那么线段树究竟是如何做到这一点的、线段树用代码又该如何实现，借着植树节的这个时间，我来浅析（学习）一下线段树的方方面面。  </p>
 <h2 id="组成与构建"><a href="#组成与构建" class="headerlink" title="组成与构建"></a>组成与构建</h2><p>简单点说，线段树就是由“区间”组成的二叉树，其结点表示的是某段区间上的区间和，而结点的子结点便是区间的左子区间和右子区间。</p>
 <p>假如有一个长度为 6 的数组<code>[1,2,3,4,5,6]</code>，我们便可构建如下的线段树。其中我们用<code>d(n)</code>表示编号为<code>n</code>的结点所存储的数值，即结点所保存的区间上的区间和。观察这棵树的性质，我们首先可以发现这是一棵完全二叉树，且其叶子结点所表示区间的区间长度均为 1。同时对于一个节点<code>n</code>，假设其表示的区间为<code>[l,r]</code>，那么它左子结点编号为<code>2n</code>，所表示的区间长度为<code>[l,\frac&#123;l+r&#125;&#123;2&#125;]</code>，而右子结点编号为<code>2n+1</code>，所表示的区间长度为<code>[\frac&#123;l+r&#125;&#123;2&#125;+1,r]</code>。而如果采用这样的存储方式，那么假设有<code>n</code>个叶子结点，即原数组长度为<code>n</code>的话，数组<code>d</code>的长度最多为<code>2^&#123;\left \lceil log n \right \rceil +1&#125;</code>（一般开 4n 的空间就够用；证明见参考资料）。</p>
-<p><img src="/images/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png" alt="线段树构建 "></p>
+<p><img src="http://qiniu-picgo.saltroping.com/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%9E%84%E5%BB%BA.png" alt="线段树构建"></p>
 <p>根据这样的性质，我们可以轻易地构建出一棵线段树。假设原数组为<code>a</code>，要将其转化为一棵线段树。首先对于一个结点<code>n</code>，设其表示的区间为<code>[l,r]</code>。如果<code>l=r</code>，那么意味着其区间长度为 1，也就有<code>d[n]=a[l]=a[r]</code>。否则，我们可以通过其子结点的<code>d[n]</code>得到，即<code>d[n]=d[2n]+d[2n+1]</code>。那么他的子结点的<code>d[n]</code>如何得到呢，很简单，把上面这个过程重复一遍即可。</p>
 <p>也就是说构建线段树的过程本质上是从根结点向下递归的过程，递归边界即是<code>l=r</code>。</p>
 <h2 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h2><p>依旧以上图为例，如果我们要查询区间<code>[4,6]</code>的值，直接返回<code>d[3]=15</code>即可。那如果我们要查询区间<code>[2,6]</code>的值呢。区间<code>[2,6]</code>可以分解为区间<code>[2,3]</code>和区间<code>[4,6]</code>的值之和，而其中的区间<code>[2,3]</code>也可以进一步分解为区间<code>[2,2]</code>和区间<code>[3,3]</code>的值之和。同样我们发现区间查询也是一个不断递归的过程。</p>

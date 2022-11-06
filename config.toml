@@ -1,0 +1,14 @@
+baseURL = 'https://blog.saltroping.com'
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh-cn'
+title = 'Saltro Ping 的博客小站'
+author = 'Saltro Ping'
+theme = 'hugo-theme-pixyll'
+hasCJKLanguage = true
+summaryLength = 120
+
+[taxonomies]
+tag = 'tags'
+
+[Languages.zh-cn]
+weight = 1

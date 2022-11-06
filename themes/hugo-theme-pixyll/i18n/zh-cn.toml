@@ -1,0 +1,20 @@
+[about]
+other = "关于"
+
+[contact]
+other = "联系方式"
+
+[tags]
+other = "标签"
+
+[search]
+other = "搜索"
+
+[written]
+other = "作者"
+
+[newer]
+other = "上一个"
+
+[older]
+other = "下一个"
